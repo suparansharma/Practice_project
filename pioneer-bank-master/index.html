@@ -38,8 +38,70 @@
         <br />
         <input type="password" class="form-control" placeholder="password" />
         <br />
-        <button class="btn-success">Enter</button>
+        <button id="login" class="btn-success">Enter</button>
+      </div>
+    </div>
+
+    <div id="transactionArea">
+      <h1>Transaction Area</h1>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="Deposit status">
+            <h5>Deposit</h5>
+            <h2>$00</h2>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="Withdraw status">
+            <h5>Withdraw</h5>
+            <h2>$00</h2>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="Balance status">
+            <h5>Balance</h5>
+            <h2>$00</h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="submit-area">
+            <h4>Deposit</h4>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="enter the Deposit value"
+            />
+            <br />
+            <button class="btn btn-success">Deposit</button>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="submit-area">
+            <h4>Withdraw</h4>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="enter the withdraw value"
+            />
+            <br />
+            <button class="btn btn-success">Withdraw</button>
+          </div>
+        </div>
       </div>
     </div>
   </body>
+
+  <script>
+    var logInBtn = document.getElementById("login");
+    logInBtn.addEventListener("click", function () {
+      const loginArea = document.getElementById("login-area");
+      loginArea.style.display = "none";
+
+      const transactionArea = document.getElementById("transactionArea");
+      transactionArea.style.display = "block";
+    });
+  </script>
 </html>
