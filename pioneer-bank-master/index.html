@@ -120,13 +120,16 @@
     var withdrawBtn = document.getElementById("withdrawBtn");
     withdrawBtn.addEventListener("click", function () {
       var withdrawAmount = inputValue("withdrawAmount");
+      updateSpan("currnetWithdrawBalance", withdrawAmount);
+      updateSpan("Balance", -1 * withdrawAmount);
+
       console.log(withdrawAmount);
     });
 
     function inputValue(id) {
-      const withdrawAmount = document.getElementById(id).value;
-      const withdrawNumber = parseInt(withdrawAmount);
-      return withdrawNumber;
+      const amount = document.getElementById(id).value;
+      const amountNumber = parseInt(amount);
+      return amountNumber;
     }
 
     function updateSpan(id, depositNumber) {
