@@ -106,6 +106,7 @@
       transactionArea.style.display = "block";
     });
 
+    // Deposit Area
     var depositBtn = document.getElementById("Depositbtn");
     depositBtn.addEventListener("click", function () {
       //   const depositAmount = document.getElementById("depositAmount").value;
@@ -117,15 +118,18 @@
       updateSpan("Balance", depositNumber);
     });
 
+    //Withdraw Area
     var withdrawBtn = document.getElementById("withdrawBtn");
     withdrawBtn.addEventListener("click", function () {
       var withdrawAmount = inputValue("withdrawAmount");
+      document.getElementById("withdrawAmount").value = "";
       updateSpan("currnetWithdrawBalance", withdrawAmount);
       updateSpan("Balance", -1 * withdrawAmount);
 
       console.log(withdrawAmount);
     });
 
+    //function area
     function inputValue(id) {
       const amount = document.getElementById(id).value;
       const amountNumber = parseInt(amount);
