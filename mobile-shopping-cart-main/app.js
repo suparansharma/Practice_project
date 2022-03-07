@@ -39,22 +39,22 @@
 //   handleProductChange(false);
 // });
 
-function handleProductChange(isIncrease) {
-  var MobileNumber = document.getElementById("MobileNumber");
-  var MobileInNumber = parseFloat(MobileNumber.value);
-  let newMobileNumber = MobileInNumber;
-  if (isIncrease == true) {
-    newMobileNumber = MobileInNumber + 1;
-  }
+// function handleProductChange(isIncrease) {
+//   var MobileNumber = document.getElementById("MobileNumber");
+//   var MobileInNumber = parseFloat(MobileNumber.value);
+//   let newMobileNumber = MobileInNumber;
+//   if (isIncrease == true) {
+//     newMobileNumber = MobileInNumber + 1;
+//   }
 
-  if (isIncrease == false && MobileInNumber > 0) {
-    newMobileNumber = MobileInNumber - 1;
-  }
+//   if (isIncrease == false && MobileInNumber > 0) {
+//     newMobileNumber = MobileInNumber - 1;
+//   }
 
-  MobileNumber.value = newMobileNumber;
-  var mobilePrice = 1219 * newMobileNumber;
-  document.getElementById("mobilePrice").innerText = mobilePrice;
-}
+//   MobileNumber.value = newMobileNumber;
+//   var mobilePrice = 1219 * newMobileNumber;
+//   document.getElementById("mobilePrice").innerText = mobilePrice;
+// }
 
 ////case items
 //// case + button
@@ -81,18 +81,114 @@ function handleProductChange(isIncrease) {
 //   document.getElementById("casePrice").innerText = casePrice;
 // });
 
-function handleProductChange(isIncrease) {
-  var CaseNumber = document.getElementById("CaseNumber");
-  var CaseInNumber = parseFloat(CaseNumber.value);
-  let newCaseNumber = CaseInNumber;
+// function handleProductChange(isIncrease) {
+//   var CaseNumber = document.getElementById("CaseNumber");
+//   var CaseInNumber = parseFloat(CaseNumber.value);
+//   let newCaseNumber = CaseInNumber;
+//   if (isIncrease == true) {
+//     newCaseNumber = CaseInNumber + 1;
+//   }
+
+//   if (isIncrease == false && CaseInNumber > 0) {
+//     newCaseNumber = CaseInNumber - 1;
+//   }
+//   CaseNumber.value = newCaseNumber;
+//   var casePrice = newCaseNumber * 59;
+//   document.getElementById("casePrice").innerText = casePrice;
+// }
+
+function handleProductChange(product, isIncrease) {
+  var itemNumber = document.getElementById(product + "Number");
+  var itemInNumber = parseFloat(itemNumber.value);
+
+  let newitemNumber = itemInNumber;
   if (isIncrease == true) {
-    newCaseNumber = CaseInNumber + 1;
+    newitemNumber = itemInNumber + 1;
   }
 
-  if (isIncrease == false && CaseInNumber > 0) {
-    newCaseNumber = CaseInNumber - 1;
+  if (isIncrease == false && itemInNumber > 0) {
+    newitemNumber = itemInNumber - 1;
   }
-  CaseNumber.value = newCaseNumber;
-  var casePrice = newCaseNumber * 59;
-  document.getElementById("casePrice").innerText = casePrice;
+  itemNumber.value = newitemNumber;
+  let Price = 0;
+
+  if (product == "Case") {
+    // itemNumber.value = newitemNumber;
+    Price = newitemNumber * 59;
+  }
+
+  if (product == "Mobile") {
+    // itemNumber.value = newitemNumber;
+    Price = newitemNumber * 1219;
+  }
+  document.getElementById(product + "Price").innerText = Price;
+  //   totalPriceWithoutVat();
+  //   tax();
+  //   totalPrice();
+
+  calculation();
+}
+
+// function totalPriceWithoutVat() {
+//   var mobilePrice = document.getElementById("MobilePrice").innerText;
+//   var newMobilePrice = parseFloat(mobilePrice);
+
+//   var casePrice = document.getElementById("CasePrice").innerText;
+//   var newCasePrice = parseFloat(casePrice);
+
+//   var totalPrice = newMobilePrice + newCasePrice;
+
+//   document.getElementById("totalPrice").innerText = totalPrice;
+// }
+
+// function tax() {
+//   var mobilePrice = document.getElementById("MobilePrice").innerText;
+//   var newMobilePrice = parseFloat(mobilePrice);
+
+//   var casePrice = document.getElementById("CasePrice").innerText;
+//   var newCasePrice = parseFloat(casePrice);
+
+//   var totalPrice = (newMobilePrice + newCasePrice) * 0.15;
+//   var margeTotalPrice = Math.round(totalPrice);
+//   console.log(margeTotalPrice);
+//   document.getElementById("tax").innerText = margeTotalPrice;
+// }
+
+// function totalPrice() {
+//   var mobilePrice = document.getElementById("MobilePrice").innerText;
+//   var newMobilePrice = parseFloat(mobilePrice);
+
+//   var casePrice = document.getElementById("CasePrice").innerText;
+//   var newCasePrice = parseFloat(casePrice);
+
+//   var totalPrice =
+//     newMobilePrice + newCasePrice + (newMobilePrice + newCasePrice) * 0.15;
+//   var margeTotalPrice = Math.round(totalPrice);
+//   console.log(margeTotalPrice);
+//   document.getElementById("total").innerText = margeTotalPrice;
+// }
+
+function calculation() {
+  //   var MobileNumber = document.getElementById("MobileNumber");
+  //   var MobileInNumber = parseFloat(MobileNumber.value);
+
+  //   var caseNumber = document.getElementById("CaseNumber");
+  //   var caseInNumber = parseFloat(caseNumber.value);
+
+  var MobileNumber = getInputValue("MobileNumber");
+  var CaseNumber = getInputValue("CaseNumber");
+
+  var price = MobileNumber * 1219 + CaseNumber * 59;
+  var tax = Math.round(price * 0.15);
+  var margeTotalPrice = price + tax;
+  //console.log(price, MobileInNumber, caseInNumber);
+  document.getElementById("totalPrice").innerText = price;
+  document.getElementById("tax").innerText = tax;
+  document.getElementById("total").innerText = margeTotalPrice;
+}
+
+function getInputValue(product) {
+  var productInput = document.getElementById(product);
+  var productNumber = parseFloat(productInput.value);
+  return productNumber;
 }
