@@ -33,7 +33,10 @@
                 <div class="col-md-5 center-item">
                   <div class="input-group number-spinner">
                     <button class="btn btn-default" id="mobileMinusBtn">
-                      <i class="fas fa-minus"></i>
+                      <i
+                        onclick="handleProductChange(false)"
+                        class="fas fa-minus"
+                      ></i>
                     </button>
                     <input
                       id="MobileNumber"
@@ -43,7 +46,11 @@
                       value="1"
                     />
                     <button class="btn btn-default">
-                      <i class="fas fa-plus" id="mobilePlusBtn"></i>
+                      <i
+                        onclick="handleProductChange(true)"
+                        class="fas fa-plus"
+                        id="mobilePlusBtn"
+                      ></i>
                     </button>
                   </div>
                   <h5>$ <span id="mobilePrice">1219</span></h5>
@@ -61,19 +68,28 @@
                 <div class="col-md-5 center-item">
                   <div class="input-group number-spinner">
                     <button class="btn btn-default">
-                      <i class="fas fa-minus"></i>
+                      <i
+                        onclick="handleProductChange(false)"
+                        class="fas fa-minus"
+                        id="caseMinusBtn"
+                      ></i>
                     </button>
                     <input
+                      id="CaseNumber"
                       type="number"
                       min="0"
                       class="form-control text-center"
                       value="1"
                     />
                     <button class="btn btn-default">
-                      <i class="fas fa-plus"></i>
+                      <i
+                        onclick="handleProductChange(true)"
+                        class="fas fa-plus"
+                        id="casePlusBtn"
+                      ></i>
                     </button>
                   </div>
-                  <h5>$59</h5>
+                  <h5>$ <span id="casePrice">59</span></h5>
                   <img src="images/remove.png" alt="" class="remove-item" />
                 </div>
               </div>
