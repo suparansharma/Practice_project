@@ -1,0 +1,23 @@
+.calculator {
+  height: 360px;
+  width: 280px;
+  background-color: aliceblue;
+  margin: 0 auto;
+  margin-top: 80px;
+  padding: auto;
+  border: 1px solid #000;
+}
+.mainBar {
+  margin-bottom: 20px;
+  text-align: right;
+}
+
+.btn {
+  font-size: 20px;
+  cursor: pointer;
+  width: 60px;
+}
+
+.line {
+  padding: 10px;
+}
