@@ -1,5 +1,5 @@
 .calculator {
-  height: 360px;
+  height: 380px;
   width: 280px;
   background-color: aliceblue;
   margin: 0 auto;
@@ -20,4 +20,18 @@
 
 .line {
   padding: 10px;
+}
+
+.lastline {
+  padding: 10px;
+}
+
+.lastline input {
+  width: 120px;
+  padding: 5px;
+}
+
+#inputBox {
+  font-size: 25px;
+  font-weight: bold;
 }
