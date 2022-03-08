@@ -92,6 +92,66 @@ function calculation(){
     var subTotalPrice = firstClassTktPrice + economyClassTktPrice;
     document.getElementById("subTotalPrice").innerText =subTotalPrice ;
 
-    console.log(subTotalPrice);
+    var ax = subTotalPrice * 0.1;
+    document.getElementById("tax").innerText =ax ;
+
+    var totalPrice =subTotalPrice +  ax;
+    document.getElementById("total").innerText =totalPrice ;
+
+
+    console.log(ax);
 }
 
+
+document.getElementById("book-button").addEventListener("click", function(){
+
+    console.log("button click")
+
+    var form = document.getElementById('form');
+     var billPaper = document.getElementById('bill-area');
+
+    let flyingTo = document.getElementById("flyingTo").value;
+    let departureTo = document.getElementById("departureTo").value;
+    let departure = document.getElementById("departure").value;
+    let returnTo = document.getElementById("returnTo").value;
+    
+    let total = document.getElementById("total").value;
+
+    if(flyingTo == ""){
+        alert("Enter your Flying From Location");
+    }
+
+    else if(departureTo == ""){
+        alert("Enter your Flying To Location");
+    }
+
+    else if(departure == ""){
+        alert("Enter your departure time");
+    }
+
+    else if (returnTo == ""){
+        alert("Enter your return time");
+    }
+
+    else if(total < 0){
+        alert("Choose your ticket first");
+    }
+
+    else{       
+
+        form.style.display = "none";
+        billPaper.style.display = "block";
+
+        document.getElementById("booked-from").innerHTML =flyingTo;
+        document.getElementById("booked-to").innerHTML =departureTo;
+        document.getElementById("booked-departure").innerHTML =departure;
+        document.getElementById("booked-return").innerHTML =returnTo;
+        // document.getElementById("booked-sub-total-price").innerHTML =flyingTo;
+        // document.getElementById("booked-tax").innerHTML =flyingTo;
+        document.getElementById("booked-total").innerHTML =document.getElementById("total").innerText;
+
+    }
+
+
+
+})

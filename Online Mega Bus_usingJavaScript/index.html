@@ -35,28 +35,28 @@
         </div>
 
 
-        <div class="booking-form">
+        <div class="booking-form" id="form">
             <h3>Explore By Bus</h3>
 
             <div class="inputs">
                 <div class="input-group">
                     <label" for="">From</label>
-                    <input class="inp-style" type="text" name="" placeholder="Dhaka">
+                    <input class="inp-style" type="text" name="" placeholder="Dhaka" id="flyingTo">
                 </div>
                 <div class="input-group">
                     <label" for="">From</label>
-                    <input class="inp-style" type="text" name="" placeholder="Chittagone">
+                    <input class="inp-style" type="text" name="" placeholder="Chittagone" id="departureTo">
                 </div>
             </div>
 
             <div class="inputs">
                 <div class="input-group">
                     <label" for="">Departure</label>
-                    <input class="inp-style" type="date" name="">
+                    <input class="inp-style" type="date" name="" id="departure">
                 </div>
                 <div class="input-group">
                     <label for="">Return</label>
-                    <input class="inp-style" type="date" name="">
+                    <input class="inp-style" type="date" name="" id="returnTo">
                 </div>
             </div>
             <div class="inputs">
@@ -97,7 +97,7 @@
                         <p>Charge 10% VAT</p>
                     </div>
                     <div class="right">
-                        <p>$50</p>
+                        <p>$ <span id="tax" >50</span> </p>
                     </div>
                 </div>
                 <hr>
@@ -106,13 +106,34 @@
                         <h4>Total</h4>
                     </div>
                     <div class="right">
-                        <p>$550</p>
+                        <p>$ <span id="total">550</span></p>
                     </div>
                 </div>
             </div>
-            <button class="btn-style">Book Now</button>
+            <button class="btn-style" id="book-button">Book Now</button>
+        </div>
+
+        <div id="bill-area">
+            <h1 style="text-align: center;">Congratulation</h1>
+            
+            <div class="submit-area">
+            
+                Flying From: <b id="booked-from"></b><br>
+                Flying To: <b id="booked-to"></b><br>
+                Departure: <b id="booked-departure"></b><br>
+                Return :<b id="booked-return"></b><br>
+                <!-- Subtotal:<span id="booked-sub-total-price"></span></div> -->
+                Subtotal: <b id="booked-sub-total-price"></b><br>
+                Tax: <b id="booked-tax"></b><br>
+                Total: <b id="booked-total"></b><br>
+                <button style="text-align: center;" id="dwn-btn" class="btn-style">Download</button>
+
+
+            </div>
         </div>
     </main>
+
+    
 
     <!--Thank You-->
 </body>
