@@ -39,14 +39,35 @@ data.forEach(country => {
     const countryInfo = `
     <h1>${country.name.common}</h1>
     <p>${country.capital}</p>
-    
+    <button onclick ="displayClickCounty('${country.name.common}')">More Details</button>
     ` 
     const countryFlag = country.flags.png;
     const img = document.createElement("img");
-    img.src=countryFlag;
+    //img.src=countryFlag;
     divCountry.innerHTML=countryInfo; 
    
     divCountry.appendChild(img);
     countyInformation.appendChild(divCountry);
 });
+}
+
+
+const displayClickCounty = clickCountry =>{
+    const url = `https://restcountries.com/v3.1/name/${clickCountry}`;
+    fetch(url)
+    .then(res => res.json())
+    .then(countryDtls => displayClickData(countryDtls[0]))
+    console.log(url);
+}
+
+const displayClickData = dataShow =>{
+
+    const countyI = document.getElementById("countryDetails");
+     countyI.innerHTML = `
+    <h1>Country name:${dataShow.name.common}</h1>
+    <p>Population:${dataShow.population}</p>
+    <img src="${dataShow.flags.png}">
+
+    `
+    console.log(dataShow)
 }
