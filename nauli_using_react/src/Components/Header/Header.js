@@ -14,6 +14,7 @@ const Header = () => {
             <a href="/inventor">Product</a>
             <a href="/inventor">Service</a>
             <a href="/inventor">Contact</a>
+            <button>Log In</button>
            
 
             </nav>

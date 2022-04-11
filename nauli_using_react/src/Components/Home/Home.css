@@ -1,0 +1,24 @@
+.article{
+    display: flex;
+}
+
+.image_part img{
+    height: 300px;
+    width: 700px;
+    margin-left: 80px;
+    margin-top: 100px;
+}
+
+.write_part {
+    margin-left: 80px;
+    margin-top: 100px;
+}
+
+.im{
+    font-size: 80px;
+    line-height: 20px;
+}
+
+.marketing{
+    margin-bottom: 70px;
+}
