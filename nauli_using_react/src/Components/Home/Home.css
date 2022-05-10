@@ -1,24 +1,49 @@
 .article{
     display: flex;
+    margin-left: 70px;
+    margin-top: 20px;
+    color: white;
 }
 
 .image_part img{
     height: 300px;
-    width: 700px;
-    margin-left: 80px;
+    width: 500px;
+    margin-left: 50px;
     margin-top: 100px;
 }
 
 .write_part {
-    margin-left: 80px;
+    margin-left: 90px;
     margin-top: 100px;
+}
+
+.write_part p{
+    margin-right: 200px;
+}
+
+.write_part button{
+    height: 40px;
+    width: 140px;
+    border-radius: 20px;
+    margin-top: 10px;
+    background-color:  rgb(233, 90, 38);
+    color: white;
 }
 
 .im{
     font-size: 80px;
-    line-height: 20px;
+    line-height: 60px;
 }
 
 .marketing{
     margin-bottom: 70px;
 }
+
+.carousels_Area{
+
+    margin-left: 80px;
+    /* margin-top: 10px; */
+    height: auto;
+
+}
+

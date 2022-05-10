@@ -1,24 +1,25 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Header.css'
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 
 const Header = () => {
     return (
-        <div className="header">
-            
-        <nav>
-            <a className='logo'>nauli</a>
-            <a href="/shop">Home</a>
-            <a href="/review">About</a>
-            <a href="/inventor">Product</a>
-            <a href="/inventor">Service</a>
-            <a href="/inventor">Contact</a>
-            <button>Log In</button>
-           
+<div className="header">
 
-            </nav>
-    </div>
+<nav>
+<a className='logo'> <span className='nlogo' >n</span> nauli</a>
+<a className='headerW' href="/home">Home</a>
+<a className='headerW' href="/about">About</a>
+<a className='headerW' href="/product">Product</a>
+<a className='headerW' href="/service">Service</a>
+<a className='headerW' href="/contact">Contact</a>
+{/* <Link to="/login"> */}
+<button  id='logInBtn'  className='button'>Login </button>
+{/* </Link> */}
+{/* <Link to="/login">Login</Link> */}
+
+</nav>
+</div>
     );
 };
 

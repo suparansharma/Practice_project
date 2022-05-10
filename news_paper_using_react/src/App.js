@@ -1,6 +1,5 @@
-import logo from './logo.svg';
+
 import './App.css';
-import { Card,Button } from 'react-bootstrap';
 import TopHeadLine from './Components/TopHeadLine/TopHeadLine';
 
 

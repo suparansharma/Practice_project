@@ -1,0 +1,35 @@
+.footerArticle{
+    display: flex;
+    margin-top: 90px;
+    margin-left: 80px;
+    /* margin-bottom: 80px; */
+    color: white;
+}
+
+
+.sceondPart{
+
+    margin-left: 900px;
+    display: flex;
+}
+
+.sceondPart p{
+    font-size: 20px;
+}
+
+.firstPart{
+    display: flex;
+    
+}
+.Prev{
+    margin-right: 60px;
+}
+
+.firstPart p{
+
+    font-size: 20px;
+}
+
+.fti{
+    margin-right: 30PX;
+}

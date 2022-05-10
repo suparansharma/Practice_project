@@ -2,6 +2,14 @@
     text-align: center;
 }
 
+.nlogo{
+
+    font-size: 50px;
+    font-weight: bold;
+    color: gray;
+}
+
+
 .header nav{
     /* background-color: black; */
     line-height: 40px;
@@ -11,9 +19,13 @@
 nav a{
 
     text-decoration: none;
-    color: black;
-    margin-right: 20px;
-    padding: 5px;
+    color: white;
+    margin-right: 2px;
+    /* padding: 5px; */
+}
+
+.headerW{
+    margin-right: 60px;
 }
 
 nav a:hover{
@@ -22,7 +34,20 @@ background-color: grey;
 
 
 .logo{
-    margin-right: 600px;
+    margin-right: 400px;
+    font-size: 25px;
 }
 
+.button{
+    /* height: 40px; */
+    width: 100px;
+    border-radius: 20px;
+    color: white;
+    background-color: rgb(233, 90, 38);
+    text-align: center;
+    
+}
 
+.Logbtn{
+    /* margin-bottom: 50px; */
+}
