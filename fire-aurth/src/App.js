@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import React from 'react';
+import React, { useState } from 'react';
 import * as firebase from 'firebase/app';
 import "firebase/auth";
 import { initializeApp } from "firebase/app";
@@ -13,18 +13,13 @@ import firebaseConfig from './firebase.config';
 
 function App() {
 
-  
-  //    const provider = new GoogleAuthProvider();
-  //   //  const provider = new firebase.auth.GoogleAuthProvider();
-  //   //  const auth = getAuth();
-  //    const handleSignIn =()=>{
-  //   firebase.auth.signInWithPopup(provider)
-  //   .then(res =>{
-  //     console.log(res);
-  //   })
+  const [user,setUser] = useState({
+    isSignedIn: false,
+    name: '',
+    email:'',
+    photo:''
 
-
-  // }
+  })
 
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
@@ -33,13 +28,31 @@ function App() {
   signInWithPopup(auth, provider)
   .then(res => {
     const {displayName,email,photoURL}=res.user;
+    const signedInUser ={
+      isSignedIn:true,
+      name:displayName,
+      email:email,
+      photo:photoURL
+    }
+    setUser(signedInUser);
     console.log(displayName,email,photoURL);
+  })
+  .catch(err =>{
+    console.log(err);
+    console.log(err.message);
   })
 
   }
   return (
    <div>
      <button onClick={handleSignIn} >SignIn</button>
+     {
+       user.isSignedIn && <div>
+         <p>Welcome,{user.name}</p>
+         <p>Your email:{user.email}</p>
+         <img src={user.photo} alt="" srcset="" />
+      </div>
+     }
    </div>
   );
 }
