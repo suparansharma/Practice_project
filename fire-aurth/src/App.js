@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import * as firebase from 'firebase/app';
 import "firebase/auth";
 import { initializeApp } from "firebase/app";
-import { getAuth,signInWithPopup,GoogleAuthProvider  } from "firebase/auth";
+import { getAuth,signInWithPopup,GoogleAuthProvider,signOut  } from "firebase/auth";
 import firebaseConfig from './firebase.config';
 // import {getAuth, signInWithPopup, GoogleAuthProvider } from  'firebase/auth';
 // import firebaseConfig from './firebase.config';
@@ -43,9 +43,31 @@ function App() {
   })
 
   }
+
+  const handleSignOut =()=>{
+    signOut(auth).then(res => {
+      const signedOutUser = {
+        isSignedIn:false,
+        name:'',
+        photo:'',
+        email:''
+
+      }
+      setUser(signedOutUser);
+      
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  }
+
   return (
    <div>
-     <button onClick={handleSignIn} >SignIn</button>
+     {
+       user.isSignedIn ?<button onClick={handleSignOut} >SignOut</button> :
+       <button onClick={handleSignIn} >SignIn</button>
+
+    }
      {
        user.isSignedIn && <div>
          <p>Welcome,{user.name}</p>
