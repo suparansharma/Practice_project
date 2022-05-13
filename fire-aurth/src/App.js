@@ -64,6 +64,16 @@ function App() {
 
   const handleBlur =(e) =>{
     console.log(e.target.name,e.target.value)
+    if(e.target.name ==='email'){
+      const isEmailValid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(e.target.value);
+      console.log(isEmailValid);
+    }
+    if(e.target.name ==='password'){
+
+      const isPasswordValid = /^[a-zA-Z0-9!@#$%^&*]{6,16}$/.test(e.target.value);
+      console.log(isPasswordValid);
+
+    }
   }
 
   return (
@@ -86,7 +96,7 @@ function App() {
        <form onSubmit={handleSubmit}>
          <input type="text" name="email" id="" onBlur={handleBlur} placeholder='input your email address' required/>
          <br />
-         <input type="password" name="password" onChange={handleBlur} id="" placeholder='input your password' required />
+         <input type="password" name="password" onChange={handleBlur} id="" placeholder='a-zA-Z0-9!@#$%^&*' required />
          <br />
          <input type="submit" value="Submit" />
        </form>
