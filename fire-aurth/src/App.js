@@ -6,10 +6,7 @@ import "firebase/auth";
 import { initializeApp } from "firebase/app";
 import { getAuth,signInWithPopup,GoogleAuthProvider,signOut  } from "firebase/auth";
 import firebaseConfig from './firebase.config';
-// import {getAuth, signInWithPopup, GoogleAuthProvider } from  'firebase/auth';
-// import firebaseConfig from './firebase.config';
-// firebase.initializeApp(firebaseConfig);
-// import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+
 
 function App() {
 
@@ -24,7 +21,7 @@ function App() {
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
   const provider = new GoogleAuthProvider();
- const handleSignIn =()=>{
+  const handleSignIn =()=>{
   signInWithPopup(auth, provider)
   .then(res => {
     const {displayName,email,photoURL}=res.user;
@@ -37,7 +34,7 @@ function App() {
     setUser(signedInUser);
     console.log(displayName,email,photoURL);
   })
-  .catch(err =>{
+  .catch(err =>{ 
     console.log(err);
     console.log(err.message);
   })
@@ -61,6 +58,14 @@ function App() {
     });
   }
 
+  const handleSubmit =()=>{
+
+  }
+
+  const handleBlur =(e) =>{
+    console.log(e.target.name,e.target.value)
+  }
+
   return (
    <div>
      {
@@ -75,6 +80,17 @@ function App() {
          <img src={user.photo} alt="" srcset="" />
       </div>
      }
+
+     <div>
+       <h1>Our own Authentication</h1>
+       <form onSubmit={handleSubmit}>
+         <input type="text" name="email" id="" onBlur={handleBlur} placeholder='input your email address' required/>
+         <br />
+         <input type="password" name="password" onChange={handleBlur} id="" placeholder='input your password' required />
+         <br />
+         <input type="submit" value="Submit" />
+       </form>
+     </div>
    </div>
   );
 }
