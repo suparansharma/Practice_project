@@ -4,9 +4,15 @@ import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import firebaseConfig from './firebase.config';
 import { UserContext } from './../../App';
 import * as firebase from 'firebase/app';
+import { useHistory } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 const Login = () => {
 
     const [loggedInUser,setLoggedInUser] =useContext(UserContext);
+    const history = useHistory();
+    const location = useLocation();
+    const { from } = location.state || { from: { pathname: "/" } };
+
     const app = initializeApp(firebaseConfig);
 
         const auth = getAuth(app);
@@ -25,6 +31,7 @@ signInWithPopup(auth, Googleprovider)
     const {displayName,email} = result.user;
     const signedInUser = {name:displayName,email};
     setLoggedInUser(signedInUser);
+    history.replace(from);
     console.log(signedInUser);
     // ...
   }).catch((error) => {
