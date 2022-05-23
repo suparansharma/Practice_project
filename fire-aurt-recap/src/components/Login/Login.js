@@ -2,22 +2,30 @@ import React, { useContext } from 'react';
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import firebaseConfig from './firebase.config';
-
+import { UserContext } from './../../App';
+import * as firebase from 'firebase/app';
 const Login = () => {
+
+    const [loggedInUser,setLoggedInUser] =useContext(UserContext);
     const app = initializeApp(firebaseConfig);
-// Initialize Firebase Authentication and get a reference to the service
-const auth = getAuth(app);
+
+        const auth = getAuth(app);
+    if(app.length === 0){
+      initializeApp(firebaseConfig);
+//     const app = initializeApp(firebaseConfig);
+
+// const auth = getAuth(app);
+    }
+
 const handleGoogleSignIn = ()=>{
     const auth = getAuth();
     const Googleprovider = new GoogleAuthProvider();
 signInWithPopup(auth, Googleprovider)
   .then((result) => {
-    // This gives you a Google Access Token. You can use it to access the Google API.
-    const credential = GoogleAuthProvider.credentialFromResult(result);
-    const token = credential.accessToken;
-    // The signed-in user info.
-    const user = result.user;
-    console.log(user);
+    const {displayName,email} = result.user;
+    const signedInUser = {name:displayName,email};
+    setLoggedInUser(signedInUser);
+    console.log(signedInUser);
     // ...
   }).catch((error) => {
     // Handle Errors here.
