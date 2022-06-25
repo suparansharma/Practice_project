@@ -12,7 +12,7 @@ const locatioon = {
 
 };
 
-function Direction() {
+function Direction(origin,destination) {
 const [directionResponse, setDirectionResponse] = useState(null);
   return (
     <LoadScript
@@ -23,24 +23,24 @@ const [directionResponse, setDirectionResponse] = useState(null);
         center={locatioon}
         zoom={16}
       >
+{
+    origin !=='' && destination !=='' && <DirectionsService
+    // required
+    options={{ 
+      destination: destination,
+      origin: origin,
+      travelMode: 'DRIVING'
+    }}
+    // required
+    callback={res=> {
+        if(res !== null) {
+          setDirectionResponse(res);
+        }
+    } }
 
-<DirectionsService
-                  // required
-                  options={{ 
-                    destination: 'Gulsan 1 circle Dhaka Bangladesh',
-                    origin: 'Banani 11 City Bank Dhaka Bangladesh',
-                    travelMode: 'DRIVING'
-                  }}
-                  // required
-                  callback={res=> {
-                      if(res !== null) {
-                        setDirectionResponse(res);
-                      }
-                  } }
-                 
+  />
+}
 
-
-                />
                 {
                     directionResponse && <DirectionsRenderer
                     // required
