@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Latest compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+      crossorigin="anonymous"
+    />
+
+    <!-- Optional theme -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css"
+      integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+      crossorigin="anonymous"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Node mongo client</h1>
+    <div id="userName"></div>
+    <div class="container">
+      <div class="row">
+        <input type="text" class="form-control" id="user" />
+        <button class="btn btn-primary" id="btnAddUser">Submit</button>
+      </div>
+    </div>
+    <script>
+          fetch("http://localhost:3000/users/3")
+            .then((res) => res.json())
+            .then((data) => {
+              document.getElementById("userName").innerText = data.name;
+            });
+
+
+            const btnAddUser = document.getElementById("btnAddUser");
+            btnAddUser.addEventListener("click",()=>{
+                const name = document.getElementById('user').value;
+                const user ={name}
+                console.log("click")
+                fetch("http://localhost:3000/appUser",{
+                method:"Post",
+                body:JSON.stringify(user),
+                headers: {
+                     'Content-type': 'application/json; charset=UTF-8'},
+            })
+            .then((res) =>res.json())
+            .then((data)=>{console.log("data")})
+            })
+            
+    </script>
+  </body>
+</html>
