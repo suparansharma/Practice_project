@@ -50,8 +50,13 @@
                      'Content-type': 'application/json; charset=UTF-8'},
             })
             .then((res) =>res.json())
-            .then((data)=>{console.log("data")})
+            .then((data)=>{updateUser(data)})
             })
+
+
+            function updateUser(user){
+                document.getElementById("userName").innerText = user.name;
+            }
             
     </script>
   </body>

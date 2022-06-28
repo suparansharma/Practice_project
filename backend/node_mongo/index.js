@@ -46,6 +46,9 @@ app.post('/appUser',(req,res) =>{
     // res.end(JSON.stringify(req.body))  
     // res.send(req.body) 
     console.log("data received",req.body)
+    const user = req.body;
+    user.id =55;
+    res.send(user);
 })
 
 
