@@ -21,7 +21,7 @@ app.get("/", (req, res) => {
 client.connect((err) => {
   const collection = client.db("organicdb").collection("products");
 
-  app.post("/addProduct", (req, res) => {
+  app.post("/addProduct",(req, res) => {
     const product = req.body;
     console.log(product);
   });
