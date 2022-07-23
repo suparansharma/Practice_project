@@ -34,6 +34,17 @@ client.connect((err) => {
     })
 
 
+    app.get('/product/:id',(req,res)=>{
+      productCollection.find({_id: ObjectId(req.params.id)})
+      .toArray((err, documents)=>{
+        res.send(documents[0]);
+      })
+    })
+
+
+
+
+
 
     app.post("/addProduct", (req, res) => {
       const product = req.body;
@@ -47,12 +58,28 @@ client.connect((err) => {
 
 
 
+    app.patch('/update/:id',(req,res)=>{
+      productCollection.updateOne({_id: ObjectId(req.params.id)},
+      {
+        $set:{price:req.body.price,quantity:req.body.quantity}
+      }
+      )
+      .then(result =>{
+        console.log(result);
+      })
+      
+    })
+
+
     app.delete('/delete/:id',(req,res)=>{
      productCollection.deleteOne({_id: ObjectId(req.params.id)})
      .then(result=>{
       console.log(result);
      })
     })
+
+
+ 
   
   });
 
