@@ -54,10 +54,21 @@ app.post('/appUser',(req,res) =>{
 
 const users = ["Asad","Moin","Saheb","Susmita","Rohan","Rahim"];
 
+
 app.get('/users/:id',(req,res) =>{
     const id =req.params.id;
     const name = users[id];
     res.send({id,name});
+})
+
+app.get('/fruit/banana',(req,res)=>{
+    const banana ={
+                name:'banana',
+                product:"ada",
+                price:220,
+                quantity:100
+            }
+            res.send(banana);
 })
 app.listen(3000,()=> console.log("listenig port 3000"));
 

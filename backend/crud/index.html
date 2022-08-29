@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h4>Hello i am new</h4>
+    <form action="/addProduct" method="post">
+      <input type="text" placeholder="name" name="name" id="" /><br />
+      <input type="text" placeholder="price" name="price" id="" /><br />
+      <input type="text" placeholder="quantity" name="quantity" id="" /><br />
+      <button type="submit">Add Product</button>
+    </form>
+
+    <div id="products"></div>
+
+    <script>
+      function loadProducts() {
+        fetch("/products")
+          .then((res) => res.json())
+          .then((products) => {
+            console.log(products);
+            const container = document.getElementById("products");
+            console.log(container);
+            products.forEach((product) => {
+              console.log(product.name);
+              const P = document.createElement("p");
+              P.innerHTML = `<strong>${product.name}</strong> price ${product.price} quantity ${product.quantity}
+              <button onclick="deleteProduct('${product._id}')">Delete</button>
+              `;
+              container.appendChild(P);
+            });
+          });
+      }
+      loadProducts();
+
+
+      function deleteProduct(id){
+        fetch(`/delete/${id}`,{
+            method:'DELETE'
+        })
+
+        .then(res=>res.json())
+        .then(result =>{
+            console.log("delete successfully")
+        })
+      }
+    </script>
+  </body>
+</html>
