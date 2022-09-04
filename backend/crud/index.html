@@ -31,7 +31,7 @@
               const P = document.createElement("p");
               P.innerHTML = `<strong>${product.name}</strong> price ${product.price} quantity ${product.quantity}
               <button onclick="loadProduct('${product._id}')">Update</button>
-              <button onclick="deleteProduct('${product._id}')">Delete</button>
+              <button onclick="deleteProduct(event,'${product._id}')">Delete</button>
               `;
               container.appendChild(P);
             });
@@ -51,7 +51,7 @@
            <h3>Update : ${data._id}</h3>
             Price: <input type="text" value=${data.price} id="price">
             Quantity: <input type="text" value=${data.quantity} id="quantity">
-            <button ">Submit</button>
+            <button onclick="updateProduct('${data._id}')">Submit</button>
             `
 
             console.log(data)
@@ -60,14 +60,40 @@
       }
 
 
-      function deleteProduct(id){
+
+      function updateProduct (id){
+        console.log('hit inside');
+        const price = document.getElementById('price').value;
+        const quantity = document.getElementById('quantity').value;
+        const product = {id,price,quantity};
+        fetch(`/update/${id}`,{
+            method:'PATCH',
+            headers:{'Content-Type':'application/json'},
+            body:JSON.stringify(product)
+        })
+        .then(res =>res.json())
+        .then(data=>{
+
+          console.log("data")
+            if(data){
+                loadAllProducts();
+                document.getElementById('update').innerHTML='';
+            }
+        })
+
+      }
+
+
+      function deleteProduct(event,id){
+        console.log(id);
         fetch(`/delete/${id}`,{
             method:'DELETE'
         })
-
-        .then(res=>res.json())
+        .then(res =>res.json())
         .then(result =>{
-            console.log("delete successfully")
+            if(result){
+                event.target.parentNode.style.display = "none";
+            }
         })
       }
 
