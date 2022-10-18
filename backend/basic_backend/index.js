@@ -1,5 +1,6 @@
 const express = require('express');
-const cors = require('cors')
+const cors = require('cors');
+const { MongoClient, ServerApiVersion } = require('mongodb');
 const app = express();
 const port = process.env.PORT || 5000;
 
@@ -9,6 +10,35 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
+// const username = basic_backend;
+// const password = xuBF4wCyCKn69S4j;
+
+
+
+
+const uri = "mongodb+srv://basic_backend:xuBF4wCyCKn69S4j@cluster0.awoh24t.mongodb.net/?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+// client.connect(err => {
+//   const collection = client.db("foodExpress").collection("users");
+//   console.log("db connected");
+//   client.close();
+// });
+
+
+async function run(){
+    try{
+        await client.connect();
+        const userCollection = client.db("foodExpress").collection("users");
+        const user = {name:'user 1',email:'user@gmail.com'};
+        const result = await userCollection.insertOne(user);
+        console.log(`User inserted with id: ${result.insertedId}`)
+    }
+    finally{
+        // await client.close();
+    }
+}
+
+run().catch(console.dir);
 const users = [
     {id:1,name: "Kattie Turnpike",suite: "Suite 198",city: "Lebsackbury",zipcode: "31428-2260"},
     {id:2,name: "messi md",suite: "Ruite 198",city: "Mebsackbury",zipcode: "31238-2260"},
