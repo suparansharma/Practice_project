@@ -1,8 +1,9 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import {Routes,Route} from 'react-router-dom';
 import AddUser from './components/AddUser/AddUser';
 import Home from './components/Home/Home';
+import UpdateUser from'./components/UpdateUser/UpdateUser';
 
 function App() {
 
@@ -11,6 +12,8 @@ function App() {
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
       <Route path='user/add' element={ <AddUser></AddUser> }></Route>
+      <Route path='/update/:id' element={<UpdateUser></UpdateUser>}></Route>
+      
       </Routes>
     </div>
   );
@@ -110,6 +113,7 @@ export default App;
 // import logo from './logo.svg';
 // import './App.css';
 // import { useEffect, useState } from 'react';
+
 
 // function App() {
 
