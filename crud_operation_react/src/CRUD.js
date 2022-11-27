@@ -31,7 +31,7 @@ const CRUD = () => {
                            <td>{current.price}</td>
                            <td>
                             <button className='edit' onClick={()=>handleEdit(current.id)}>Edit</button>
-                            <button className='delete'>Delete</button>
+                            <button className='delete' type='button' onClick={()=>handleDelete(current.id)}>Delete</button>
                             </td> 
                         </tr>
                     ))
@@ -45,7 +45,10 @@ const CRUD = () => {
     function handleEdit(id){
         setUpdateState(id);
     }
-
+    function handleDelete(id){
+        const newlist = lists.filter((li)=>li.id !== id);
+        setList(newlist);
+    }
     function handleSubmit(event){
         event.preventDefault();
         const name = event.target.elements.name.value;
@@ -90,19 +93,29 @@ function AddList({setList}){
 }
 
 function EditList(current,lists,setList){
-    function handInput(event){
-        const name = event.target.name;
-        const value = name.value;
+    function handInputName(event){
+
+        const value = event.target.value;
         const newlist = lists.map((li) =>(
             li.id === current.id ? {...li,name:value} : li
         ))
 
         setList(newlist)
     }
+
+    function handInputPrice(event){
+       
+        const value = event.target.value;
+        const newlist = lists.map((li) =>(
+            li.id === current.id ? {...li,price:value} : li
+        ))
+
+        setList(newlist)
+    }
     return(
         <tr>
-            <td><input type="text" onChange={handInput} name='name' value={current.name}/></td>
-            <td><input type="text" name='price' value={current.price}/></td>
+            <td><input type="text" onChange={handInputName} name='name' value={current.name}/></td>
+            <td><input type="text" onChange={handInputPrice} name='price' value={current.price}/></td>
             <td><button type='submit'>Update</button></td>
         </tr>
     )
