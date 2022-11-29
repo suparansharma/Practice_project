@@ -8,6 +8,7 @@ import STATE from './components/STATE/STATE';
 import CONDITIONAL_RENDERING from './CONDITIONAL_RENDERING/CONDITIONAL_RENDERING';
 import Event_Handler from './Event_Handler/Event_Handler';
 import USESTATE from './USESTATE/USESTATE';
+import FORM from './FORM/FORM';
 function App() {
   let items = [];
   items = Data.map((item) =><Card key={item.id} titleText={item.title} descText={item.desc}/>)
@@ -29,7 +30,10 @@ function App() {
 <Event_Handler/>
 
 <h2>Hooks start from here</h2><br />
-<USESTATE/>
+<USESTATE/><br />
+<h1>This is form data collection</h1><br />
+
+<FORM/>
 
     </div> 
   );
