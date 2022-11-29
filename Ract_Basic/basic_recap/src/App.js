@@ -4,6 +4,7 @@ import Card from './components/Card';
 import Data from './data.json'
 import { v4 as uuidv4 } from 'uuid';
 import Users from './components/Users/Users';
+import STATE from './components/STATE/STATE';
 function App() {
   let items = [];
   items = Data.map((item) =><Card key={item.id} titleText={item.title} descText={item.desc}/>)
@@ -15,6 +16,8 @@ function App() {
   <Card titleText={Data[3].title} descText={Data[3].desc}/> */}
   {items}
   <Users/>
+  <h1>State work start from here</h1><br />
+  <STATE/>
     </div> 
   );
 }
