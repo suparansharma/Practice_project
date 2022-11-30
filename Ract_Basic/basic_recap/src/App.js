@@ -9,6 +9,7 @@ import CONDITIONAL_RENDERING from './CONDITIONAL_RENDERING/CONDITIONAL_RENDERING
 import Event_Handler from './Event_Handler/Event_Handler';
 import USESTATE from './USESTATE/USESTATE';
 import FORM from './FORM/FORM';
+import FormikSignup from './FormikSignup/FormikSignup';
 function App() {
   let items = [];
   items = Data.map((item) =><Card key={item.id} titleText={item.title} descText={item.desc}/>)
@@ -34,6 +35,9 @@ function App() {
 <h1>This is form data collection</h1><br />
 
 <FORM/>
+
+<h1>Formik</h1> <br />
+<FormikSignup/>
 
     </div> 
   );
