@@ -3,19 +3,17 @@ import React, { useState } from 'react';
 
 const FormikSignup = () => {
     
-    
     const formik = useFormik({
         initialValues:{
             name:'',
             email:'',
             password:''
         },
-        onSubmit:(values)=>{
+        onSubmit:(values, {resetForm})=>{
             console.log(values);
+            resetForm({values:""})
         },
     })
-    
-  
 
     return (
         

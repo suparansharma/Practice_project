@@ -10,6 +10,7 @@ import Event_Handler from './Event_Handler/Event_Handler';
 import USESTATE from './USESTATE/USESTATE';
 import FORM from './FORM/FORM';
 import FormikSignup from './FormikSignup/FormikSignup';
+import FormikValidation from './FormikValidation/FormikValidation';
 function App() {
   let items = [];
   items = Data.map((item) =><Card key={item.id} titleText={item.title} descText={item.desc}/>)
@@ -37,7 +38,11 @@ function App() {
 <FORM/>
 
 <h1>Formik</h1> <br />
-<FormikSignup/>
+<FormikSignup/><br />
+
+
+<h1>Formik Validation</h1><br />
+<FormikValidation/>
 
     </div> 
   );
