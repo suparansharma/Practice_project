@@ -3,7 +3,9 @@ import style from './country.module.css'
 const Country = (props) => {
     const {country} = props;
     const {name,flags,capital,population,area} = country;
-    
+    const handleRemoveCountry =(name) =>{
+        props.onRemoveCountry(name);
+    }
     return (
         <article className={style.country}>
             <div>
