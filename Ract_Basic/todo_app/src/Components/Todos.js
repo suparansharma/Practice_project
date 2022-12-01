@@ -6,8 +6,8 @@ const Todos = (props) => {
     return (
         <section className={style.todos}>
             {
-                props.dummyTodos.map((todo)=>
-                <Todo key={todo.id} todo={todo}/>
+                props.todos.map((todo)=>
+                <Todo key={todo.id} todo={todo.todo} id={todo.id} onRemoveTodo={props.onRemoveTodo} />
                 
                 )
             }
