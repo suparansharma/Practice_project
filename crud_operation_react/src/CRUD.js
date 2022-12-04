@@ -77,7 +77,7 @@ function AddList({setList}){
             price
         }
         setList((prevList)=>{
-            return prevList.concat(newList)
+            return prevList.concat.newList
         })
 
         nameRef.current.value = "";
