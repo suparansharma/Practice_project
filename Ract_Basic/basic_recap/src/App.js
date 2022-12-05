@@ -11,6 +11,8 @@ import USESTATE from './USESTATE/USESTATE';
 import FORM from './FORM/FORM';
 import FormikSignup from './FormikSignup/FormikSignup';
 import FormikValidation from './FormikValidation/FormikValidation';
+import { UserContext } from './use__context/UserContext';
+import Component1 from './use__context/Component1';
 function App() {
   let items = [];
   items = Data.map((item) =><Card key={item.id} titleText={item.title} descText={item.desc}/>)
@@ -44,6 +46,9 @@ function App() {
 <h1>Formik Validation</h1><br />
 <FormikValidation/>
 
+
+<h1>UserContext</h1>
+<Component1/>
     </div> 
   );
 }
