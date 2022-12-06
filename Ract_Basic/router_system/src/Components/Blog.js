@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import { blogsData } from './../data';
 const Blog = () => {
@@ -23,6 +24,7 @@ const Blog = () => {
                             <article key={id}>
                                 <h3>{title}</h3>
                                 <p>{truncateString(body,20)}</p>
+                                <Link to={title} state={{ id,title,body }}>Learn more</Link>
                             </article>
                         )
                     })
