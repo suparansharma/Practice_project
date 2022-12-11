@@ -21,6 +21,7 @@ const AddUser = () => {
         .then(data =>{
             console.log('success',data)
             alert('user added successfully');
+            event.target.reset();
         })
     }
     return (
@@ -30,7 +31,7 @@ const AddUser = () => {
             <form onSubmit={handleAddUser}>
                 <input type="text" name='name' placeholder='name' required />
                 <br />
-                <input type="text" name='email' placeholder='email' re />
+                <input type="text" name='email' placeholder='email' required />
                 <br />
                 <input type="submit" value="Add user" />
             </form>

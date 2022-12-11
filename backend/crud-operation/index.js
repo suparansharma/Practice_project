@@ -24,7 +24,7 @@ const userCollection = client.db("foodExpress").collection("user");
 // const result = await userCollection.insertOne(user);
 // console.log(`user insert with id : ${result.insertedId}`);
 
-
+//for post data
 app.post('/user',async(req,res)=>{
     const newUser = req.body;
     console.log('adding new user',newUser);
@@ -33,12 +33,52 @@ app.post('/user',async(req,res)=>{
 });
 
 
+//for get data 
 app.get('/user',async(req,res)=>{
     const query = {};
     const cursor = userCollection.find(query)
     const users = await cursor.toArray();
     res.send(users);
 })
+
+// for delete data
+app.delete('/user/:id',async(req,res)=>{
+    const id = req.params.id;
+    const query ={_id:ObjectId(id)};
+    const result = await userCollection.deleteOne(query);
+    res.send(result);
+})
+
+// for update data
+app.put('/user/:id',async(req,res)=>{
+    const id = req.params.id;
+    const updatedUser = req.body;
+    const filter ={_id:ObjectId(id)};
+    const options = {upsert:true};
+    const updatedDoc = {
+        $set:{
+            name:updatedUser.name,
+            email:updatedUser.email
+        }
+    };
+    const result = await userCollection.updateOne(filter,updatedDoc,options);
+    res.send(result);
+})
+
+
+
+
+
+
+
+
+app.get('/user/:id',async(req,res)=>{
+    const id = req.params.id;
+    const query = {_id:ObjectId(id)};
+    const result = await userCollection.findOne(query);
+    res.send(result);
+})
+
 
 }
 
