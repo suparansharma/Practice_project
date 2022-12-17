@@ -13,6 +13,8 @@ import FormikSignup from './FormikSignup/FormikSignup';
 import FormikValidation from './FormikValidation/FormikValidation';
 import { UserContext } from './use__context/UserContext';
 import Component1 from './use__context/Component1';
+
+import Daterange from './components/Daterange/Daterange';
 function App() {
   let items = [];
   items = Data.map((item) =><Card key={item.id} titleText={item.title} descText={item.desc}/>)
@@ -49,6 +51,10 @@ function App() {
 
 <h1>UserContext</h1>
 <Component1/>
+
+<br />
+<h1>Date range picker</h1>
+<Daterange/>
     </div> 
   );
 }
