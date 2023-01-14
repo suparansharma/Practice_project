@@ -1,16 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Button } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom';
 
 
 const Login = () => {
   const navigate = useNavigate();
-  const login=()=>{
-    navigate('/add')
-  }
+  useEffect(()=>{
+    if(localStorage.getItem('"user-info"')){
+      navigate('/add')
+    }
+  },[])
+
+  
   return (
     <div>
-      <Button onClick={login} className='primary'>Login</Button>
+      <Button  className='primary'>Login</Button>
     </div>
     
   )

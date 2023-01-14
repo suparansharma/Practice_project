@@ -10,16 +10,21 @@ import {
   MDBInput,
   MDBRow
 } from 'mdb-react-ui-kit';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 const Register = () => {
   const [name,setName] = useState("");
   const [email,setEmail]= useState("");
   const[password,setPassword] = useState("");
   const navigate = useNavigate();
+  useEffect(()=>{
+    if(localStorage.getItem("user-info")){
+      navigate('/add')
+    }
+  },[])
   const  signUp =()=>{
-    navigate('/add')
+
     let items = {name,email,password};
     const url="http://localhost:8000/api/register";
     let result =  fetch(url,{

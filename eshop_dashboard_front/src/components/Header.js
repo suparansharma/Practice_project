@@ -14,15 +14,17 @@ const Header = () => {
           {
             localStorage.getItem('user-info') ?
               <>
-                <Link to="/login">Login</Link>
-                <Link to="/register">Register</Link>
+                <Link to="/home">Home</Link>
+                <Link to="/add">
+                    
+                </Link>
+                <Link to="/update">Update</Link>
               </>
               :
               <>
+                <Link to="/login">Login</Link>
+                <Link to="/register">Register</Link>
 
-                <Link to="/home">Home</Link>
-                <Link to="/add">Add</Link>
-                <Link to="/update">Update</Link>
 
               </>
           }
