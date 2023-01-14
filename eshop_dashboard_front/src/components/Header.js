@@ -5,19 +5,32 @@ import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
 
 const Header = () => {
+
   return (
     <Navbar bg="dark" variant="dark">
-    <Container>
-      <Navbar.Brand href="#home">Eshop-Dashboard</Navbar.Brand>
-      <Nav className="me-auto navbar_warper">
-        <Link to="/home">Home</Link>
-        <Link to="/add">Add</Link>
-        <Link to="/update">Update</Link>
-        <Link to="/login">Login</Link>
-        <Link to="/register">Register</Link>
-      </Nav>
-    </Container>
-  </Navbar>
+      <Container>
+        <Navbar.Brand href="#home">Eshop-Dashboard</Navbar.Brand>
+        <Nav className="me-auto navbar_warper">
+          {
+            localStorage.getItem('user-info') ?
+              <>
+                <Link to="/login">Login</Link>
+                <Link to="/register">Register</Link>
+              </>
+              :
+              <>
+
+                <Link to="/home">Home</Link>
+                <Link to="/add">Add</Link>
+                <Link to="/update">Update</Link>
+
+              </>
+          }
+
+
+        </Nav>
+      </Container>
+    </Navbar>
   )
 }
 
