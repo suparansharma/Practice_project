@@ -18,16 +18,16 @@ const Register = () => {
   const [email,setEmail]= useState("");
   const[password,setPassword] = useState("");
   const navigate = useNavigate();
-  useEffect(()=>{
+
+    useEffect(()=>{
     if(localStorage.getItem("user-info")){
       navigate('/add')
     }
   },[])
-  const  signUp =()=>{
-
+  const  signUp  =async()=>{
     let items = {name,email,password};
     const url="http://localhost:8000/api/register";
-    let result =  fetch(url,{
+    let result = await fetch(url,{
       method:'POST',
       body:JSON.stringify(items),
       headers:{
@@ -35,13 +35,17 @@ const Register = () => {
         "Accept": 'application/json'
       }
     })
-
-    result = result.json()
-    localStorage.setItem("user-info",JSON.stringify(result));
     
+    result = await result.json()
+    localStorage.setItem("user-info",JSON.stringify(result));
+    navigate('/add')
+    
+    
+    console.log("result",result);
 
-    // console.log(result);
+    // console.log(items)
   }
+
   return (
       <MDBContainer fluid>
 

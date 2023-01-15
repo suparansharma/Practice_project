@@ -17,8 +17,10 @@ function App() {
        {/* <Route path="/" element={ <Header/> } /> */}
        <Route path="/login" element={<Login/> } />
        <Route path="/register" element={<Register/> } />
-       <Route path="/add"  element={<Protected Component={Add}/> }/>
-       <Route path="/update"  element={<Protected Component={Update}/> } />
+       {/* <Route path="/add"  element={<Add/> }/>
+       <Route path="/update"  element={<Update/> }/> */}
+      <Route path="/add"  element={<Protected Component={Add}/> }/>
+       <Route path="/update"  element={<Protected Component={Update}/> } /> 
     </Routes>
     </div>
   );
