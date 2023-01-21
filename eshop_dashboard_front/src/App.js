@@ -6,7 +6,8 @@ import Login from './components/Login';
 import Register from './components/Register';
 import Add from './components/Add';
 import Update from './components/Update';
-import Protected from './components/Protected';
+import Protected from './components/Protected';//ProductList
+import ProductList from './components/ProductList';
 
 function App() {
  
@@ -15,12 +16,14 @@ function App() {
     <Header/>
     <Routes>
        {/* <Route path="/" element={ <Header/> } /> */}
+       
        <Route path="/login" element={<Login/> } />
        <Route path="/register" element={<Register/> } />
        {/* <Route path="/add"  element={<Add/> }/>
        <Route path="/update"  element={<Update/> }/> */}
       <Route path="/add"  element={<Protected Component={Add}/> }/>
        <Route path="/update"  element={<Protected Component={Update}/> } /> 
+       <Route path="/"  element={<Protected Component={ProductList}/> } /> 
     </Routes>
     </div>
   );
