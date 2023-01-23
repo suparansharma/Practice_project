@@ -22,7 +22,7 @@ function App() {
        {/* <Route path="/add"  element={<Add/> }/>
        <Route path="/update"  element={<Update/> }/> */}
       <Route path="/add"  element={<Protected Component={Add}/> }/>
-       <Route path="/update"  element={<Protected Component={Update}/> } /> 
+       <Route path="/update/:id"  element={<Protected Component={Update}/> } /> 
        <Route path="/"  element={<Protected Component={ProductList}/> } /> 
     </Routes>
     </div>
