@@ -8,6 +8,7 @@ import Add from './components/Add';
 import Update from './components/Update';
 import Protected from './components/Protected';//ProductList
 import ProductList from './components/ProductList';
+import SearchBar from './components/SearchBar';
 
 function App() {
  
@@ -24,6 +25,7 @@ function App() {
       <Route path="/add"  element={<Protected Component={Add}/> }/>
        <Route path="/update/:id"  element={<Protected Component={Update}/> } /> 
        <Route path="/"  element={<Protected Component={ProductList}/> } /> 
+       <Route path="/search"  element={<Protected Component={SearchBar}/> } /> 
     </Routes>
     </div>
   );

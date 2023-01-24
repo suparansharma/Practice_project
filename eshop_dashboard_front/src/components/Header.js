@@ -25,6 +25,7 @@ const Header = () => {
                 <Link to="/add">Add</Link>
                 <Link to="/update">Update</Link>
                 <Link to="/">Products</Link>
+                <Link to="/search">Search</Link>
               </>
               :
               <>
