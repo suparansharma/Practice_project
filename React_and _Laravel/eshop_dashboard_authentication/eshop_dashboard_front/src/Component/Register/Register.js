@@ -4,6 +4,7 @@ const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const signUp = async () => {
     let items = { name, email, password };
@@ -19,7 +20,7 @@ const Register = () => {
 
     result = await result.json()
     localStorage.setItem("user-info",JSON.stringify(result));
-    // navigate('/add')
+    navigate('/add')
 
 
     console.log("result", result);
