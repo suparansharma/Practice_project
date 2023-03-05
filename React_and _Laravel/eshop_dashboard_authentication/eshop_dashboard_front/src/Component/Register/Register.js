@@ -6,7 +6,16 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const signUp = async () => {
+
+  useEffect(() => {
+    if (localStorage.getItem("user-info")) {
+
+      navigate('/add');
+    }
+  }, [])
+
+  const signUp = async (e) => {
+    e.preventDefault();
     let items = { name, email, password };
     const url = "http://localhost:8000/api/register";
     let result = await fetch(url, {
@@ -19,7 +28,7 @@ const Register = () => {
     })
 
     result = await result.json()
-    localStorage.setItem("user-info",JSON.stringify(result));
+    localStorage.setItem("user-info", JSON.stringify(result));
     navigate('/add')
 
 
