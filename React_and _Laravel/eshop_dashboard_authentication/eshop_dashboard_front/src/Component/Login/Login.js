@@ -1,11 +1,12 @@
 import React, { useState,useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
+import AuthUser from '../AuthUser/AuthUser';
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-
+const {http,setToken} = AuthUser()
   useEffect(() => {
     if (localStorage.getItem("user-info")) {
 
@@ -14,20 +15,29 @@ const Login = () => {
   }, [])
 
 
-  const login = async () => {
+  const login =  () => {
     let items = {email,password};
-    console.log(items);
+    // console.log(items);
 
-    let result = await fetch('http://localhost:8000/api/login',{
-      method:"POST",
-      headers:{
-        'Content-Type': 'application/json',
-        "Accept": 'application/json'
-      },
-      body: JSON.stringify(items),
+    // let result = await fetch('http://localhost:8000/api/login',{
+    //   method:"POST",
+    //   headers:{
+    //     'Content-Type': 'application/json',
+    //     "Accept": 'application/json'
+    //   },
+    //   body: JSON.stringify(items),
+    // })
+
+     http.post('/login',{email:email,password:password}) 
+    .then((res)=>{
+      setToken(res.data.user,res.data.access_token);
+      console.log(res.data);
+      // console.log(res.data)
     })
-    result = await result.json();
-    localStorage.setItem("user-info",JSON.stringify(result));
+
+
+    // result = await result.json();
+    // localStorage.setItem("user-info",JSON.stringify(result));
     navigate('/add')
   
   }

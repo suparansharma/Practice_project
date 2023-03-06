@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -46,6 +48,23 @@ class AuthController extends Controller
         return response()->json($this->guard()->user());
     }
 
+    // public function login(Request $req)
+    // {
+    //     $credentials = $req->only('email', 'password');
+        
+    //     if ($token = $this->guard()->attempt($credentials)) {
+    //         return $this->respondWithToken($token);
+    //     }
+    //     $user = User::where('email', $req->email)->first();
+    //     if (!$user || !Hash::check($req->password, $user->password)) {
+    //         return response([
+    //             'error' => ["Email or Password is not match"]
+    //         ]);
+    //     }
+    //     // return $user;
+    //     return response()->json(['error' => 'Unauthorized'], 401);
+    // }
+
     /**
      * Log the user out (Invalidate the token)
      *
@@ -81,7 +100,7 @@ class AuthController extends Controller
             'access_token' => $token,
             'token_type' => 'bearer',
             'expires_in' => $this->guard()->factory()->getTTL() * 60,
-            'user'=>auth()->user
+            'user'=> $this->guard()->user()
         ]);
     }
 
