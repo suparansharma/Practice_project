@@ -24,3 +24,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // Route::post('register',UserController::class,'register');
 Route::post("register",[UserController::class,'register']);
 Route::post("login",[LoginController::class,'login']);
+
+
+Route::group(['middleware' => 'api'], function ($router) {
+
+    Route::post('login', 'AuthController@login');
+    Route::post('logout', 'AuthController@logout');
+    Route::post('refresh', 'AuthController@refresh');
+    Route::post('me', 'AuthController@me');
+
+});
