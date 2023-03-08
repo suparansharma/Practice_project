@@ -17,7 +17,7 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login']]);
+        $this->middleware('auth:api', ['except' => ['login','register']]);
     }
 
     /**
@@ -29,24 +29,39 @@ class AuthController extends Controller
      */
     public function login(Request $request)
     {
-       // return auth()->user();
+        // return auth()->user();
 
 
-       if(!($request->email && $request->password)){
-        return response()->json(['status_code'=>'200','status'=>'true','error' => 'field required'], 401);
-       }
+        if (!($request->email && $request->password)) {
+            return response()->json(['status_code' => '200', 'status' => 'true', 'error' => 'field required'], 401);
+        }
 
 
-    //    else{
-    //     return response()->json(['error' => 'field required'], 401);
-    //    }
-    $credentials = $request->only('email', 'password');
+        //    else{
+        //     return response()->json(['error' => 'field required'], 401);
+        //    }
+        $credentials = $request->only('email', 'password');
         if ($token = $this->guard()->attempt($credentials)) {
             return $this->respondWithToken($token);
         }
 
         // return $this->respondWithToken($token);
         return response()->json(['error' => 'Unauthorized'], 401);
+    }
+
+
+    public function register(Request $req)
+    {
+        // $credentials = $request(['name', 'email', 'password']);
+        // User::create($credentials);
+        // return response()->json('success');
+
+        $user = new User;
+        $user->name=$req->input('name');
+        $user->email=$req->input('email');
+        $user->password =Hash::make($req->input('password'));
+        $user->save();
+        return  $user;
     }
 
     /**
@@ -62,7 +77,7 @@ class AuthController extends Controller
     // public function login(Request $req)
     // {
     //     $credentials = $req->only('email', 'password');
-        
+
     //     if ($token = $this->guard()->attempt($credentials)) {
     //         return $this->respondWithToken($token);
     //     }
@@ -111,7 +126,7 @@ class AuthController extends Controller
             'access_token' => $token,
             'token_type' => 'bearer',
             'expires_in' => $this->guard()->factory()->getTTL() * 60,
-            'user'=> $this->guard()->user()
+            'user' => $this->guard()->user()
         ]);
     }
 
