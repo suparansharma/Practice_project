@@ -29,12 +29,23 @@ class AuthController extends Controller
      */
     public function login(Request $request)
     {
-        $credentials = $request->only('email', 'password');
+       // return auth()->user();
 
+
+       if(!($request->email && $request->password)){
+        return response()->json(['status_code'=>'200','status'=>'true','error' => 'field required'], 401);
+       }
+
+
+    //    else{
+    //     return response()->json(['error' => 'field required'], 401);
+    //    }
+    $credentials = $request->only('email', 'password');
         if ($token = $this->guard()->attempt($credentials)) {
             return $this->respondWithToken($token);
         }
 
+        // return $this->respondWithToken($token);
         return response()->json(['error' => 'Unauthorized'], 401);
     }
 
