@@ -3,13 +3,25 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Container, NavDropdown } from 'react-bootstrap';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import AuthUser from '../AuthUser/AuthUser';
 const Header = () => {
+    const {user,logout,token} = AuthUser();
     const navigate = useNavigate()
-    const user = JSON.parse(localStorage.getItem('user-info'));
+    // const user = JSON.parse(sessionStorage.getItem('user'));
+
     const logOut = () => {
-        localStorage.clear();
-        navigate("/register");
+        // sessionStorage.clear();
+        // navigate("/register");
+
+        if(token != undefined){
+
+            logout();
+        }
+        
+
     }
+
+
     return (
         <div>
             <Navbar bg="dark" variant="dark">
@@ -18,7 +30,9 @@ const Header = () => {
                     <Nav className="me-auto navbar_warper">
 
                         {
-                            localStorage.getItem('user-info') ?
+                            // sessionStorage.getItem('user')
+                            
+                            user ?
                                 <>
                                     <Link to="/home">Home</Link>
                                     <Link to="/add">Add</Link>
@@ -37,7 +51,9 @@ const Header = () => {
 
 
                     {
-                        localStorage.getItem("user-info") ?
+                        // sessionStorage.getItem("user")
+                        
+                        user?
                             <Nav>
                                 <NavDropdown title={user.name}>
                                     <NavDropdown.Item onClick={logOut}>

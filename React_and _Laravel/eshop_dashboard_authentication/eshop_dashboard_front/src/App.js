@@ -8,7 +8,6 @@ import Add_Product from './Component/Add_Product/Add_Product';
 import Protected from './Component/Protected/Protected';
 
 function App() {
-  console.log("first")
   return (
     <>
       <Header />

@@ -1,8 +1,11 @@
 import React from 'react'
+import UserProfile from '../UserProfile/UserProfile'
 
 const Add_Product = () => {
     return (
-        <div>Add_Product</div>
+        <div>
+            <UserProfile/>
+        </div>
     )
 }
 

@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import AuthUser from './../AuthUser/AuthUser';
 const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-
+  const {http} = AuthUser();
 
   useEffect(() => {
     if (localStorage.getItem("user-info")) {
@@ -14,27 +15,31 @@ const Register = () => {
     }
   }, [])
 
-  const signUp = async (e) => {
-    e.preventDefault();
-    let items = { name, email, password };
-    const url = "http://localhost:8000/api/register";
-    let result = await fetch(url, {
-      method: 'POST',
-      body: JSON.stringify(items),
-      headers: {
-        'Content-Type': 'application/json',
-        "Accept": 'application/json'
-      }
+  // const signUp = async (e) => {
+  //   e.preventDefault();
+  //   let items = { name, email, password };
+  //   const url = "http://localhost:8000/api/register";
+  //   let result = await fetch(url, {
+  //     method: 'POST',
+  //     body: JSON.stringify(items),
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       "Accept": 'application/json'
+  //     }
+  //   })
+
+  //   result = await result.json()
+  //   localStorage.setItem("user-info", JSON.stringify(result));
+  //   navigate('/add')
+  // }
+
+
+  const signUp = () =>{
+
+    http.post('/register',{name:name,email:email,password:password})
+    .then((res)=>{
+      navigate('/login')
     })
-
-    result = await result.json()
-    localStorage.setItem("user-info", JSON.stringify(result));
-    navigate('/add')
-
-
-    console.log("result", result);
-
-    // console.log(items)
   }
   return (
     <div className='row justify-content-center pt-5'>

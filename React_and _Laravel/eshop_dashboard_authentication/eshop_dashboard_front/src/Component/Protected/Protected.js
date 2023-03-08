@@ -6,7 +6,7 @@ const Protected = (props) => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (!localStorage.getItem('user-info')) {
+        if (!sessionStorage.getItem('user')) {
             navigate('/register')
         }
     })

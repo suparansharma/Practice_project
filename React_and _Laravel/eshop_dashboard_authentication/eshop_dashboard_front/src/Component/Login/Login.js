@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 import AuthUser from '../AuthUser/AuthUser';
 
@@ -6,17 +6,17 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-const {http,setToken} = AuthUser()
+  const { http, setToken } = AuthUser()
   useEffect(() => {
-    if (localStorage.getItem("user-info")) {
+    if (sessionStorage.getItem("user")) {
 
       navigate('/add')
     }
   }, [])
 
 
-  const login =  () => {
-    let items = {email,password};
+  const login = () => {
+    let items = { email, password };
     // console.log(items);
 
     // let result = await fetch('http://localhost:8000/api/login',{
@@ -28,21 +28,21 @@ const {http,setToken} = AuthUser()
     //   body: JSON.stringify(items),
     // })
 
-     http.post('/login',{email:email,password:password}) 
-    .then((res)=>{
-      // setToken(res.data.user,res.data.access_token);
-      setToken(res?.data?.user,res?.data?.access_token);
-      // console.log(res.data)
-    })
+    http.post('/login', { email: email, password: password })
+      .then((res) => {
+        // setToken(res.data.user,res.data.access_token);
+        setToken(res?.data?.user, res?.data?.access_token);
+        // console.log(res.data)
+      })
 
 
     // result = await result.json();
     // localStorage.setItem("user-info",JSON.stringify(result));
     navigate('/add')
-  
+
   }
 
-  
+
   return (
     <div className='row justify-content-center pt-5'>
       <div className="col-sm-6">
