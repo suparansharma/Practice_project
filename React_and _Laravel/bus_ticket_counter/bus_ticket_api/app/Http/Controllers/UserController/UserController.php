@@ -4,11 +4,15 @@ namespace App\Http\Controllers\UserController;
 
 use App\Models\User;
 
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use App\Requests\CustomRequestHandler;
-use Psr\Http\Message\RequestInterface as Request;
-use Psr\Http\Message\ResponseInterface as Response;
-class UserController
+
+
+
+class UserController extends Controller
 {
     protected $customResponse;
     protected $success;
@@ -21,12 +25,13 @@ class UserController
 
     public function go(Request $request, Response $response)
     {
-        $this->params = CustomRequestHandler::getAllParams($request);
-        $action = isset($this->params->action) ? $this->params->action : "";
+        // return $request->action;
+        // $this->params = CustomRequestHandler::getAllParams($request);
+        $action = $request->action;
         switch ($action) {
 
             case 'createCustomer':
-                $this->createCustomer($request, $response);
+                $this->createCustomer();
                 break;
 
             default:
@@ -39,14 +44,25 @@ class UserController
             return $this->customResponse->is400Response($response, $this->responseMessage, $this->outputData);
         }
 
-        return $this->customResponse->is200Response($response, $this->responseMessage, $this->outputData);
+        return $this->customResponse->is200Response( $this->success, $this->responseMessage, $this->outputData);
     }
 
-    public function createCustomer(Request $request)
+    public function createCustomer()
     {
 
         $this->responseMessage = "New Customer has been created successfully";
         $this->outputData = "aaa";
         $this->success = true;
+        // return;
+
+        echo "all";
+
+       
     }
+
+
+    // function go(Request $request, Response $response){
+
+    // echo "all";
+    // }
 }
