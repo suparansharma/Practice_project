@@ -50,7 +50,7 @@ class AuthController extends Controller
         $user->email=$req->input('email');
         $user->password =Hash::make($req->input('password'));
         $user->save();
-        return  $user;
+        return response()->json('success');
     }
 
     /**

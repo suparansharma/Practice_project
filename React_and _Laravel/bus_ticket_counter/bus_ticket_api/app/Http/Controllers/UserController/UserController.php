@@ -14,55 +14,41 @@ use App\Requests\CustomRequestHandler;
 
 class UserController extends Controller
 {
-    protected $customResponse;
-    protected $success;
-    protected $outputData;
-    protected $params;
-    protected $responseMessage;
-    public function __construct()
-    {
-    }
 
     public function go(Request $request, Response $response)
     {
-        // return $request->action;
-        // $this->params = CustomRequestHandler::getAllParams($request);
+       
         $action = $request->action;
         switch ($action) {
 
             case 'createCustomer':
-                $this->createCustomer();
+                $this->createCustomer($request);
                 break;
 
             default:
-                $this->responseMessage = "Invalid request!";
-                return $this->customResponse->is400Response($response, $this->responseMessage);
+                return "invalid request ";
                 break;
         }
 
-        if (!$this->success) {
-            return $this->customResponse->is400Response($response, $this->responseMessage, $this->outputData);
-        }
 
-        return $this->customResponse->is200Response( $this->success, $this->responseMessage, $this->outputData);
     }
 
-    public function createCustomer()
+    public function createCustomer(Request  $request)
     {
 
-        $this->responseMessage = "New Customer has been created successfully";
-        $this->outputData = "aaa";
-        $this->success = true;
-        // return;
 
-        echo "all";
+
+        $user = new User;
+        $user->name= $request->input('name');
+        $user->email= $request->input('email');
+        $user->password =Hash::make( $request->input('password'));
+        $user->save();
+        // return  $user;
+        return response()->json('success');
 
        
     }
 
 
-    // function go(Request $request, Response $response){
 
-    // echo "all";
-    // }
 }
