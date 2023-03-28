@@ -22,8 +22,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::post('login', [AuthController::class,'login']);
+Route::post('users', [UserController::class,'getAllUsers']);
+Route::post('userss', [UserController::class,'userInfoParams']);
+Route::post('users/{id?}', [UserController::class,'getUserInfo']);
 Route::post('register',[AuthController::class,'register']);
-Route::post('user', [UserController::class, 'go']);
+Route::post('user', [UserController::class,'go']);
+Route::get('user', [UserController::class, 'go']);
 Route::group(['middleware' => 'api',], function ($router) {
 
     Route::post('logout', [AuthController::class,'logout']);
