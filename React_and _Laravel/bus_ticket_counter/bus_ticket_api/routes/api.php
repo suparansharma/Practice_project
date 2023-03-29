@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DeviceController;
 use App\Http\Controllers\UserController\UserController;
 
 /*
@@ -25,6 +26,12 @@ Route::post('login', [AuthController::class,'login']);
 Route::post('users', [UserController::class,'getAllUsers']);
 Route::post('userss', [UserController::class,'userInfoParams']);
 Route::post('users/{id?}', [UserController::class,'getUserInfo']);
+
+Route::post('device/add', [DeviceController::class,'addDevice']);
+Route::post('device/update', [DeviceController::class,'updateDevice']);
+Route::get('device/search/{name}', [DeviceController::class,'deviceSearch']);
+
+
 Route::post('register',[AuthController::class,'register']);
 Route::post('user', [UserController::class,'go']);
 Route::get('user', [UserController::class, 'go']);
