@@ -30,6 +30,7 @@ Route::post('users/{id?}', [UserController::class,'getUserInfo']);
 Route::post('device/add', [DeviceController::class,'addDevice']);
 Route::post('device/update', [DeviceController::class,'updateDevice']);
 Route::get('device/search/{name}', [DeviceController::class,'deviceSearch']);
+Route::delete('device/{id?}', [DeviceController::class,'deleteDevice']);
 
 
 Route::post('register',[AuthController::class,'register']);
