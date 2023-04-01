@@ -26,6 +26,7 @@ Route::post('login', [AuthController::class,'login']);
 Route::post('users', [UserController::class,'getAllUsers']);
 Route::post('userss', [UserController::class,'userInfoParams']);
 Route::post('users/{id?}', [UserController::class,'getUserInfo']);
+// Route::post('users/{id?}', [UserController::class,'getUserInfo']);
 
 Route::post('device/add', [DeviceController::class,'addDevice']);
 Route::post('device/update', [DeviceController::class,'updateDevice']);
